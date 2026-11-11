@@ -46,6 +46,39 @@
       }
     </div>
   </section>
+  <section class="section" id="projekte">
+    <p class="label">Projekte</p>
+    <h2>Was ich gebaut habe</h2>
+    <div class="cards">
+      @for (project of projects; track project.title) {
+      <article class="card project">
+        @if (project.image) {
+        <img class="shot" [src]="project.image" [alt]="project.title" />
+        }
+        <h3>{{ project.title }}</h3>
+        <p class="desc">{{ project.description }}</p>
+        <div class="chips">
+          @for (tag of project.tags; track tag) {
+          <span class="chip">{{ tag }}</span>
+          }
+        </div>
+        @if (project.demo || project.code) {
+        <div class="links">
+          @if (project.demo) {
+          <a [href]="project.demo" target="_blank" rel="noopener"
+            >Live-Demo ↗</a
+          >
+          } @if (project.code) {
+          <a [href]="project.code" target="_blank" rel="noopener" class="muted"
+            >Code auf GitHub ↗</a
+          >
+          }
+        </div>
+        }
+      </article>
+      }
+    </div>
+  </section>
 </main>
 
 <router-outlet />
