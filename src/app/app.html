@@ -30,6 +30,22 @@
       <!-- hier kommt später der Avatar -->
     </div>
   </section>
+  <section class="section" id="technologien">
+    <p class="label">Technologien</p>
+    <h2>Womit ich arbeite</h2>
+    <div class="cards">
+      @for (group of skillGroups; track group.title) {
+      <div class="card">
+        <h3>{{ group.title }}</h3>
+        <div class="chips">
+          @for (item of group.items; track item) {
+          <span class="chip">{{ item }}</span>
+          }
+        </div>
+      </div>
+      }
+    </div>
+  </section>
 </main>
 
 <router-outlet />
