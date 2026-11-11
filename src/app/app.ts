@@ -1,4 +1,10 @@
-import { Component, ElementRef, HostListener, viewChild } from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  signal,
+  viewChild,
+} from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 
 interface Project {
@@ -175,12 +181,31 @@ export class App {
       text: "Diplom „Spezialistin für Werbung“.",
     },
   ];
+  // Ist das Menü auf dem Handy geöffnet?
+  protected menuOffen = signal(false);
+
+  protected toggleMenu() {
+    this.menuOffen.update((offen) => !offen);
+  }
+
+  protected closeMenu() {
+    this.menuOffen.set(false);
+  }
+
   private video = viewChild<ElementRef<HTMLVideoElement>>("avatarVideo");
 
   // Sekunden im Video: Blick nach links, geradeaus und nach rechts
   private readonly tLeft = 2.5;
   private readonly tCenter = 4.2;
   private readonly tRight = 6.5;
+
+  // Wohin der Kopf drehen soll und wo das Video gerade steht
+  private targetTime = this.tCenter;
+  private currentTime = this.tCenter;
+
+  constructor() {
+    this.animate();
+  }
 
   onVideoReady() {
     const video = this.video()?.nativeElement;
@@ -195,12 +220,31 @@ export class App {
     if (!video) {
       return;
     }
-    // -1 = Cursor am linken Rand, 0 = in der Mitte, 1 = am rechten Rand
-    const x = (event.clientX / window.innerWidth) * 2 - 1;
-    const time =
+    // Mitte des Avatars auf dem Bildschirm
+    const rect = video.getBoundingClientRect();
+    const mitte = rect.left + rect.width / 2;
+
+    // -1 = ganz links im Fenster, 0 = Cursor auf Höhe des Avatars, 1 = ganz rechts
+    const x =
+      event.clientX < mitte
+        ? (event.clientX - mitte) / mitte
+        : (event.clientX - mitte) / (window.innerWidth - mitte);
+
+    // Nur das Ziel merken, bewegt wird in animate()
+    this.targetTime =
       x < 0
         ? this.tLeft + (this.tCenter - this.tLeft) * (x + 1)
         : this.tCenter + (this.tRight - this.tCenter) * x;
-    video.currentTime = time;
+  }
+
+  // Läuft dauernd und bewegt das Video langsam zum Ziel
+  private animate() {
+    const video = this.video()?.nativeElement;
+    const differenz = this.targetTime - this.currentTime;
+    if (video && Math.abs(differenz) > 0.001) {
+      this.currentTime += differenz * 0.05;
+      video.currentTime = this.currentTime;
+    }
+    requestAnimationFrame(() => this.animate());
   }
 }

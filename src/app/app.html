@@ -1,17 +1,30 @@
 <header class="header">
   <a href="#home" class="logo">Marina <span>Husar</span></a>
-  <nav class="nav">
-    <a href="#technologien">Technologien</a>
-    <a href="#projekte">Projekte</a>
-    <a href="#werdegang">Werdegang</a>
-    <a href="#kontakt" class="btn">Kontakt</a>
+  <button
+    type="button"
+    class="burger"
+    aria-label="Menü öffnen"
+    [attr.aria-expanded]="menuOffen()"
+    (click)="toggleMenu()"
+  >
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" [class.offen]="menuOffen()">
+    <a href="#technologien" (click)="closeMenu()">Technologien</a>
+    <a href="#projekte" (click)="closeMenu()">Projekte</a>
+    <a href="#werdegang" (click)="closeMenu()">Werdegang</a>
+    <a href="#kontakt" class="btn" (click)="closeMenu()">Kontakt</a>
   </nav>
 </header>
 
 <main>
   <section class="hero" id="home">
     <div class="hero-text">
-      <p class="pill">Offen für Junior-Stellen · Erlangen / Nürnberg</p>
+      <p class="pill">
+        Offen für Junior-Stellen<span class="pill-ort">
+          · Erlangen / Nürnberg</span
+        >
+      </p>
       <h1>
         Hallo, ich bin Marina.<br /><span>Junior Software Developer.</span>
       </h1>
