@@ -266,3 +266,50 @@ h2 {
   flex-direction: column;
   gap: 6px;
 }
+.contact {
+  background: var(--surface);
+  background-image: radial-gradient(circle at 90% 0%, #f3e4dc 0%, #ffffff 55%);
+  border: 1px solid var(--border);
+  border-radius: 36px;
+  padding: 64px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+
+  h2 {
+    margin: 0;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  p {
+    margin: 0;
+    max-width: 520px;
+    font-size: 18px;
+    color: var(--muted);
+  }
+}
+
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 48px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--muted);
+
+  a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
