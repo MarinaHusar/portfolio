@@ -30,6 +30,7 @@
       <!-- hier kommt später der Avatar -->
     </div>
   </section>
+
   <section class="section" id="technologien">
     <p class="label">Technologien</p>
     <h2>Womit ich arbeite</h2>
@@ -46,6 +47,7 @@
       }
     </div>
   </section>
+
   <section class="section" id="projekte">
     <p class="label">Projekte</p>
     <h2>Was ich gebaut habe</h2>
@@ -76,6 +78,31 @@
         </div>
         }
       </article>
+      }
+    </div>
+  </section>
+
+  <section class="section" id="werdegang">
+    <p class="label">Werdegang</p>
+    <h2>Mein Weg in die Softwareentwicklung</h2>
+    <div class="timeline">
+      @for (item of stations; track item.title) {
+      <div class="station">
+        <div class="station-date">{{ item.date }}</div>
+        <div class="station-body">
+          <h3>{{ item.title }}</h3>
+          <p class="place">{{ item.place }}</p>
+          @if (item.text) {
+          <p class="text">{{ item.text }}</p>
+          } @if (item.points) {
+          <ul class="points">
+            @for (point of item.points; track point) {
+            <li>{{ point }}</li>
+            }
+          </ul>
+          }
+        </div>
+      </div>
       }
     </div>
   </section>
