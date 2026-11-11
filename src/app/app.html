@@ -27,7 +27,16 @@
     </div>
 
     <div class="hero-avatar">
-      <!-- hier kommt später der Avatar -->
+      <video
+        #avatarVideo
+        class="avatar-video"
+        src="images/avatar.mp4"
+        poster="images/avatar-poster.jpg"
+        muted
+        playsinline
+        preload="auto"
+        (loadedmetadata)="onVideoReady()"
+      ></video>
     </div>
   </section>
 

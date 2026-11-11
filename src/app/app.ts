@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, HostListener, viewChild } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 
 interface Project {
@@ -175,4 +175,32 @@ export class App {
       text: "Diplom „Spezialistin für Werbung“.",
     },
   ];
+  private video = viewChild<ElementRef<HTMLVideoElement>>("avatarVideo");
+
+  // Sekunden im Video: Blick nach links, geradeaus und nach rechts
+  private readonly tLeft = 2.5;
+  private readonly tCenter = 4.2;
+  private readonly tRight = 6.5;
+
+  onVideoReady() {
+    const video = this.video()?.nativeElement;
+    if (video) {
+      video.currentTime = this.tCenter;
+    }
+  }
+
+  @HostListener("window:mousemove", ["$event"])
+  onMouseMove(event: MouseEvent) {
+    const video = this.video()?.nativeElement;
+    if (!video) {
+      return;
+    }
+    // -1 = Cursor am linken Rand, 0 = in der Mitte, 1 = am rechten Rand
+    const x = (event.clientX / window.innerWidth) * 2 - 1;
+    const time =
+      x < 0
+        ? this.tLeft + (this.tCenter - this.tLeft) * (x + 1)
+        : this.tCenter + (this.tRight - this.tCenter) * x;
+    video.currentTime = time;
+  }
 }
