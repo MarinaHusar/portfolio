@@ -170,7 +170,6 @@ export class App {
       points: [
         "Kundenbasis von Grund auf aufgebaut, vom Kleinauftrag bis zu Handelsketten und Einkaufszentren (über 50 Kunden); über Kontakte zu Centermanagern Erstaufträge bei Neueröffnungen und anschließend Weiterempfehlung als zuverlässiger Dienstleister",
         "Projektleitung von der Anfrage bis zur Übergabe (Kundenkommunikation, Produktionskontrolle, Materialbestellung, Abrechnung) mit Koordination von Mitarbeitenden, Monteuren und Druckereien; Termine eingehalten",
-        "Viele Stammkunden mit Folgeaufträgen",
       ],
     },
     {

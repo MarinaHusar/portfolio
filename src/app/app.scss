@@ -8,8 +8,7 @@
   box-shadow:
     0 1px 0 var(--border),
     0 8px 16px -10px rgba(22, 25, 29, 0.18);
-  max-width: none;
-  margin: 0 auto;
+  // Kopfzeile über die ganze Breite, der Inhalt bleibt auf 1200px zentriert
   padding: 28px max(40px, calc((100% - 1200px) / 2));
   display: flex;
   flex-wrap: wrap;
@@ -34,13 +33,26 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 28px;
+  gap: 4px;
   font-size: 15px;
   font-weight: 500;
 
   a {
     color: var(--muted);
     text-decoration: none;
+    // Innenabstand und runde Ecken, damit der Hintergrund beim Hover wie eine Pille aussieht
+    padding: 8px 14px;
+    border-radius: 999px;
+    transition:
+      background 0.15s,
+      color 0.15s;
+  }
+
+  // Mauszeiger darüber: weiße Pille und Akzentfarbe
+  a:not(.btn):hover,
+  a:not(.btn):focus-visible {
+    background: var(--surface);
+    color: var(--accent);
   }
 
   a.aktiv:not(.btn) {
@@ -166,7 +178,6 @@ h1 {
   height: 100%;
   object-fit: cover;
   object-position: top;
-  border-radius: 0;
   // Hintergrund des Videos etwas aufhellen, bis er reines Weiß ist
   filter: brightness(1.12);
   // Weiß wird dadurch genau zur Farbe der Seite, Schwarz bleibt Schwarz
@@ -230,6 +241,7 @@ h2 {
   border: 1px solid #d9d8d2;
   font-size: 14px;
 }
+
 .project {
   flex: 1 1 320px;
   display: flex;
@@ -272,6 +284,7 @@ h2 {
     color: var(--muted);
   }
 }
+
 .timeline {
   display: flex;
   flex-direction: column;
@@ -325,6 +338,7 @@ h2 {
   flex-direction: column;
   gap: 6px;
 }
+
 .contact {
   background: var(--surface);
   background-image: radial-gradient(circle at 90% 0%, #f3e4dc 0%, #ffffff 55%);
@@ -354,8 +368,8 @@ h2 {
 .footer {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 40px 48px;
-  padding-bottom: 88px;
+  // Unten viel Platz, damit der Nach-oben-Knopf die Links nicht verdeckt
+  padding: 0 40px 88px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -392,13 +406,26 @@ h2 {
   text-decoration: none;
   box-shadow: 0 8px 24px rgba(22, 25, 29, 0.18);
   opacity: 0.85;
+
   &:hover {
     opacity: 1;
   }
 }
 
-// Große Monitore: Werdegang-Texte füllen die Breite, Text-Limit entfällt
+// Große Monitore: breiterer Inhalt, damit nichts klein und verloren wirkt
 @media (min-width: 1600px) {
+  .hero,
+  .section,
+  .footer {
+    max-width: 1600px;
+  }
+
+  // Kopfzeile: Inhalt endet an derselben Kante wie der Rest (1600px minus 2 × 40px Rand)
+  .header {
+    padding-inline: max(40px, calc((100% - 1520px) / 2));
+  }
+
+  // Werdegang-Texte füllen die Breite, Text-Limit entfällt
   .station-body .text,
   .points {
     max-width: none;
@@ -427,6 +454,7 @@ h2 {
     }
   }
 }
+
 // Tablet und Handy: eine Spalte, Reihenfolge Text, Avatar, Buttons
 @media (max-width: 900px) {
   .hero {
@@ -488,6 +516,20 @@ h2 {
     a {
       padding: 10px 12px;
       font-size: 16px;
+      border-radius: 12px;
+    }
+
+    // Mauszeiger darüber oder Fingertipp: Eintrag bekommt einen hellen Hintergrund
+    a:not(.btn):hover,
+    a:not(.btn):active,
+    a:not(.btn):focus-visible {
+      background: var(--bg);
+      color: var(--accent);
+    }
+
+    // Der Abschnitt, in dem man gerade ist, bleibt ebenfalls markiert
+    a.aktiv:not(.btn) {
+      background: var(--bg);
     }
 
     .btn {
