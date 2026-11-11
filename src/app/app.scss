@@ -1,9 +1,16 @@
 .header {
-  // relative: Das Handy-Menü wird darunter positioniert
-  position: relative;
-  max-width: 1280px;
+  // Kopfzeile bleibt beim Scrollen oben stehen (das Handy-Menü wird darunter positioniert)
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--bg);
+  // Dünne Linie und weicher Schatten, damit der Text darunter nicht mit der Kopfzeile verschmilzt
+  box-shadow:
+    0 1px 0 var(--border),
+    0 8px 16px -10px rgba(22, 25, 29, 0.18);
+  max-width: none;
   margin: 0 auto;
-  padding: 28px 40px;
+  padding: 28px max(40px, calc((100% - 1200px) / 2));
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -34,6 +41,10 @@
   a {
     color: var(--muted);
     text-decoration: none;
+  }
+
+  a.aktiv:not(.btn) {
+    color: var(--accent);
   }
 
   .btn {
@@ -163,6 +174,8 @@ h1 {
 }
 
 .section {
+  // Abstand oben, damit die Überschrift beim Anspringen nicht unter der Kopfzeile verschwindet
+  scroll-margin-top: 80px;
   max-width: 1280px;
   margin: 0 auto;
   padding: 72px 40px;
@@ -342,6 +355,7 @@ h2 {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 40px 48px;
+  padding-bottom: 88px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -377,15 +391,40 @@ h2 {
   font-size: 22px;
   text-decoration: none;
   box-shadow: 0 8px 24px rgba(22, 25, 29, 0.18);
+  opacity: 0.85;
+  &:hover {
+    opacity: 1;
+  }
 }
 
-// Große Monitore: breiterer Inhalt, damit nichts klein und verloren wirkt
+// Große Monitore: Werdegang-Texte füllen die Breite, Text-Limit entfällt
 @media (min-width: 1600px) {
-  .header,
-  .hero,
-  .section,
-  .footer {
-    max-width: 1600px;
+  .station-body .text,
+  .points {
+    max-width: none;
+    font-size: 18px;
+  }
+}
+
+// Breite Bildschirme: Kontakt-Karte in zwei Spalten (Text links, Buttons rechts)
+@media (min-width: 1100px) {
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 48px;
+    row-gap: 16px;
+
+    h2,
+    p {
+      grid-column: 1;
+    }
+
+    // Der letzte Block der Karte (die Buttons) wandert nach rechts
+    > :last-child {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+    }
   }
 }
 // Tablet und Handy: eine Spalte, Reihenfolge Text, Avatar, Buttons

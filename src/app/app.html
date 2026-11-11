@@ -10,9 +10,24 @@
     <span></span><span></span><span></span>
   </button>
   <nav class="nav" [class.offen]="menuOffen()">
-    <a href="#technologien" (click)="closeMenu()">Technologien</a>
-    <a href="#projekte" (click)="closeMenu()">Projekte</a>
-    <a href="#werdegang" (click)="closeMenu()">Werdegang</a>
+    <a
+      href="#technologien"
+      [class.aktiv]="aktiveSektion() === 'technologien'"
+      (click)="closeMenu()"
+      >Technologien</a
+    >
+    <a
+      href="#projekte"
+      [class.aktiv]="aktiveSektion() === 'projekte'"
+      (click)="closeMenu()"
+      >Projekte</a
+    >
+    <a
+      href="#werdegang"
+      [class.aktiv]="aktiveSektion() === 'werdegang'"
+      (click)="closeMenu()"
+      >Werdegang</a
+    >
     <a href="#kontakt" class="btn">Kontakt</a>
   </nav>
 </header>

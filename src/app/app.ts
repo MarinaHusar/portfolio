@@ -194,9 +194,32 @@ export class App {
   // Zeigt den Nach-oben-Button erst, wenn man etwas nach unten gescrollt hat
   protected zeigeNachOben = signal(false);
 
+  // Welcher Abschnitt gerade im Bild ist (für die Hervorhebung im Menü)
+  protected aktiveSektion = signal("");
+  private readonly sektionen = [
+    "technologien",
+    "projekte",
+    "werdegang",
+    "kontakt",
+  ];
+
   @HostListener("window:scroll")
   onScroll() {
     this.zeigeNachOben.set(window.scrollY > 500);
+
+    let aktiv = "";
+    for (const id of this.sektionen) {
+      const element = document.getElementById(id);
+      // Ein Abschnitt zählt als aktiv, sobald seine Oberkante fast oben im Fenster ist
+      if (element && element.offsetTop - 150 <= window.scrollY) {
+        aktiv = id;
+      }
+    }
+    // Ganz unten auf der Seite ist immer "Kontakt" aktiv
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) {
+      aktiv = "kontakt";
+    }
+    this.aktiveSektion.set(aktiv);
   }
 
   private video = viewChild<ElementRef<HTMLVideoElement>>("avatarVideo");
