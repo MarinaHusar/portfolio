@@ -360,6 +360,25 @@ h2 {
   gap: 24px;
 }
 
+// Schwebender Button, der zum Seitenanfang zurückführt
+.nach-oben {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 22px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(22, 25, 29, 0.18);
+}
+
 // Große Monitore: breiterer Inhalt, damit nichts klein und verloren wirkt
 @media (min-width: 1600px) {
   .header,

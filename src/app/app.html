@@ -13,7 +13,7 @@
     <a href="#technologien" (click)="closeMenu()">Technologien</a>
     <a href="#projekte" (click)="closeMenu()">Projekte</a>
     <a href="#werdegang" (click)="closeMenu()">Werdegang</a>
-    <a href="#kontakt" class="btn" (click)="closeMenu()">Kontakt</a>
+    <a href="#kontakt" class="btn">Kontakt</a>
   </nav>
 </header>
 
@@ -35,7 +35,13 @@
       </p>
       <div class="actions">
         <a href="#projekte" class="btn">Projekte ansehen</a>
-        <a href="#kontakt" class="btn btn-outline">CV als PDF</a>
+        <a
+          href="Lebenslauf_Marina_Husar.pdf"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-outline"
+          >CV als PDF</a
+        >
       </div>
     </div>
 
@@ -139,7 +145,7 @@
       <div class="actions">
         <a href="mailto:husar.m.de@gmail.com" class="btn">E-Mail schreiben</a>
         <a
-          href="https://www.linkedin.com/in/marina-h-57876b258/"
+          href="https://www.linkedin.com/in/marina-husar"
           target="_blank"
           rel="noopener"
           class="btn btn-outline"
@@ -164,5 +170,9 @@
     <a href="#">Datenschutz</a>
   </div>
 </footer>
+
+@if (zeigeNachOben()) {
+<a href="#home" class="nach-oben" aria-label="Nach oben">↑</a>
+}
 
 <router-outlet />

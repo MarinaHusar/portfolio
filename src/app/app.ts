@@ -191,6 +191,13 @@ export class App {
   protected closeMenu() {
     this.menuOffen.set(false);
   }
+  // Zeigt den Nach-oben-Button erst, wenn man etwas nach unten gescrollt hat
+  protected zeigeNachOben = signal(false);
+
+  @HostListener("window:scroll")
+  onScroll() {
+    this.zeigeNachOben.set(window.scrollY > 500);
+  }
 
   private video = viewChild<ElementRef<HTMLVideoElement>>("avatarVideo");
 
