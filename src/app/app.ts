@@ -227,6 +227,8 @@ export class App {
   private readonly tLeft = 2.5;
   private readonly tCenter = 4.2;
   private readonly tRight = 6.5;
+  // Geräte ohne Maus (Handy, Tablet): der Kopf dreht sich von allein
+  private ohneMaus = window.matchMedia("(hover: none)").matches;
 
   // Wohin der Kopf drehen soll und wo das Video gerade steht
   private targetTime = this.tCenter;
@@ -270,6 +272,14 @@ export class App {
   private animate() {
     const video = this.video()?.nativeElement;
     const differenz = this.targetTime - this.currentTime;
+    // Ohne Maus: ruhiges Hin- und Herschwingen zwischen links und rechts (ca. 11 Sekunden pro Runde)
+    if (this.ohneMaus) {
+      const welle = Math.sin(performance.now() / 1800);
+      this.targetTime =
+        welle >= 0
+          ? this.tCenter + welle * (this.tRight - this.tCenter)
+          : this.tCenter + welle * (this.tCenter - this.tLeft);
+    }
     if (video && Math.abs(differenz) > 0.001) {
       this.currentTime += differenz * 0.05;
       video.currentTime = this.currentTime;
