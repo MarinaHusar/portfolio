@@ -1,59 +1,62 @@
-# Portfolio
+# Portfolio – Marina Husar
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+Persönliche Portfolio-Website mit Projekten, Technologien und Werdegang. Als Lernprojekt mit Angular und TypeScript entwickelt.
 
-## Development server
+![Startseite](docs/startseite.png)
 
-To start a local development server, run:
+## Besonderheiten
+
+- **Interaktiver Avatar:** Der Kopf folgt dem Mauszeiger. Dafür wird ein Video je nach Cursorposition an die passende Stelle gespult und weich angefahren.
+- **Handy und Tablet:** Ohne Maus dreht sich der Kopf von allein ruhig hin und her.
+- **Responsives Layout:** Eine Spalte auf dem Handy, zwei Spalten auf großen Bildschirmen, Burger-Menü auf kleinen Geräten.
+- **Navigation:** Der aktuelle Abschnitt wird im Menü hervorgehoben, ein Button führt zurück zum Seitenanfang.
+- **Werdegang:** Getrennt nach Berufserfahrung und Ausbildung.
+- **Lebenslauf:** Als PDF zum Download.
+
+## Technologien
+
+- **Frontend:** HTML5, SCSS, JavaScript, TypeScript, Angular, Ionic, React (Grundlagen)
+- **Testing & QA:** Testpläne, manuelle Tests, Selenium, Playwright, Pytest
+- **Backend & Daten:** Node.js, Python, Java (Grundlagen), SQL, MySQL
+- **Tools & Methoden:** Git / GitHub, Azure DevOps, Jira, Scrum, Figma, Storybook
+
+## Screenshots
+
+### Desktop
+
+![Technologien](docs/technologien.png)
+
+![Projekte](docs/projekte.png)
+
+![Werdegang](docs/werdegang.png)
+
+![Kontakt](docs/kontakt.png)
+
+### Mobil
+
+| Ansicht                           | Burger-Menü                           |
+| --------------------------------- | ------------------------------------- |
+| ![Mobile Ansicht](docs/mobil.png) | ![Mobiles Menü](docs/mobil-menue.png) |
+
+## Lokal starten
 
 ```bash
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Danach ist die Seite unter `http://localhost:4200` erreichbar.
 
-## Code scaffolding
+## Aufbau
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- `src/app/app.ts`: Daten (Technologien, Projekte, Werdegang) und Logik (Menü, Scroll-Hervorhebung, Avatar-Steuerung)
+- `src/app/app.html`: Aufbau der Seite
+- `src/app/app.scss`: Gestaltung und responsives Layout
+- `public/`: Avatar-Video, Bilder und Lebenslauf als PDF
 
-```bash
-ng generate component component-name
-```
+## Kontakt
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Ich freue mich über eine Nachricht zu Junior-Stellen in Erlangen, Nürnberg und Fürth oder remote.
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- [LinkedIn](https://www.linkedin.com/in/marina-husar)
+- [GitHub](https://github.com/MarinaHusar)
