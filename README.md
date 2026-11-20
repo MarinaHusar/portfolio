@@ -36,7 +36,7 @@ Persönliche Portfolio-Website mit Projekten, Technologien und Werdegang. Als Le
 
 | Ansicht                           | Burger-Menü                           |
 | --------------------------------- | ------------------------------------- |
-| ![Mobile Ansicht](docs/mobil.png) | ![Mobiles Menü](docs/mobil-menue.png) |
+| ![Mobile Ansicht](docs/mobil.png) | ![Mobiles Menü](docs/mobil_menue.png) |
 
 ## Lokal starten
 
