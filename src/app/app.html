@@ -154,8 +154,10 @@
   <section class="section" id="werdegang">
     <p class="label">Werdegang</p>
     <h2>Mein Weg in die Softwareentwicklung</h2>
+    @for (gruppe of gruppen; track gruppe.titel) {
+    <h3 class="gruppe-titel">{{ gruppe.titel }}</h3>
     <div class="timeline">
-      @for (item of stations; track item.title) {
+      @for (item of gruppe.stationen; track item.title) {
       <div class="station">
         <div class="station-date">{{ item.date }}</div>
         <div class="station-body">
@@ -174,6 +176,7 @@
       </div>
       }
     </div>
+    }
   </section>
 
   <section class="section" id="kontakt">

@@ -348,6 +348,20 @@ h2 {
   flex-direction: column;
 }
 
+// Überschriften "Berufserfahrung" und "Ausbildung" im Werdegang
+.gruppe-titel {
+  margin: 0 0 4px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+// Zweite Überschrift: mehr Abstand zum Abschnitt davor
+.timeline + .gruppe-titel {
+  margin-top: 64px;
+}
+
 .station {
   display: flex;
   flex-wrap: wrap;

@@ -18,6 +18,7 @@ interface Project {
 
 interface Station {
   date: string;
+  art: "ausbildung" | "beruf";
   title: string;
   place: string;
   text?: string;
@@ -103,13 +104,15 @@ export class App {
   ];
   protected stations: Station[] = [
     {
-      date: "08/2026 – 11/2026 (laufend)",
+      date: "08/2026 – 12/2026 (laufend)",
+      art: "ausbildung",
       title: "Weiterbildung QA Automation",
       place: "RedRover School, Online-Kurs",
       text: "Inhalte: QA-Theorie, MySQL, Testautomatisierung mit Python (Pytest, Selenium) und TypeScript (Playwright).",
     },
     {
       date: "05/2025 – 02/2026",
+      art: "beruf",
       title: "Praktikum als Software Developer (Angular)",
       place: "IT-Labs GmbH, Fürth",
       points: [
@@ -123,6 +126,7 @@ export class App {
     },
     {
       date: "02/2024 – 02/2026",
+      art: "ausbildung",
       title:
         "Umschulung zur Fachinformatikerin für Anwendungsentwicklung (IHK)",
       place: "GFN GmbH, Nürnberg",
@@ -133,12 +137,14 @@ export class App {
     },
     {
       date: "12/2023 – 01/2024",
+      art: "ausbildung",
       title: "Vorbereitungskurs IT-Umschulung",
       place: "GFN GmbH, Nürnberg",
       text: "Grundlagen der IT-Technik und Anwendungsentwicklung, Algorithmen, Netzwerke, digitale Sicherheit, IT-Service-Management.",
     },
     {
       date: "10/2023 – 11/2023",
+      art: "ausbildung",
       title: "Erprobungscenter für Digitale Berufe",
       place: "DCI, Berlin",
       points: [
@@ -147,39 +153,39 @@ export class App {
       ],
     },
     {
-      date: "2021 – 2023",
-      title: "Integrationsphase in Deutschland",
-      place: "Integrations- und Sprachkurse",
-      text: "Vorbereitung auf den deutschen Arbeitsmarkt (Deutsch bis B2 Beruf).",
-    },
-    {
-      date: "06/2017 – 02/2021",
-      title: "Social Media Managerin",
-      place: "Selbstständig, remote",
-      points: [
-        "Aufbau und Betreuung von Kunden-Accounts auf Instagram, Facebook/Meta und VK, oft ausgehend von null: Content-Plan, Fotos, Texte und Design, teils komplett übernommen, teils mit Anleitung zur eigenen Umsetzung",
-        "Mehr Reichweite, Follower, Anfragen und Verkäufe für Kunden durch Algorithmus-Optimierung, gezielte Werbung (Targeting) und Auswertung der Ergebnisse",
-        "Neukunden kamen über die eigene Social-Media-Präsenz ohne aktive Akquise",
-      ],
-    },
-    {
-      date: "05/2014 – 08/2020",
-      title: "Projektmanagerin",
+      date: "05/2014 – 02/2021",
+      art: "beruf",
+      title: "Projektmanagement, Social Media Marketing und Kundenbetreuung",
       place:
         "Werbeagentur, Krasnodar (zunächst angestellt in einer anderen Agentur, ab 2015 Mitgründerin der eigenen Agentur)",
       points: [
-        "Kundenbasis von Grund auf aufgebaut, vom Kleinauftrag bis zu Handelsketten und Einkaufszentren (über 50 Kunden); über Kontakte zu Centermanagern Erstaufträge bei Neueröffnungen und anschließend Weiterempfehlung als zuverlässiger Dienstleister",
-        "Projektleitung von der Anfrage bis zur Übergabe (Kundenkommunikation, Produktionskontrolle, Materialbestellung, Abrechnung) mit Koordination von Mitarbeitenden, Monteuren und Druckereien; Termine eingehalten",
+        "Tätigkeit als Projektmanagerin in einem Unternehmen mit Verantwortung für die Koordination von Projekten und Kundenkommunikation",
+        "Anschließende Gründung und Führung eines eigenen Unternehmens",
+        "Planung und Umsetzung von Social-Media-Marketing-Maßnahmen und digitalen Kommunikationsstrategien",
+        "Betreuung von Kunden, Koordination von Aufgaben und Organisation laufender Projekte",
+        "Eigenverantwortliche Planung und Steuerung von Arbeitsabläufen und Kundenprojekten",
       ],
     },
     {
       date: "09/2009 – 07/2014",
+      art: "ausbildung",
       title:
         "Bachelor of Arts, Wirtschaftswissenschaft (in Deutschland anerkannt)",
       place: "Russische Staatliche Sozialuniversität, Moskau",
       text: "Diplom „Spezialistin für Werbung“.",
     },
   ];
+
+  // Die Stationen werden nach Art getrennt, damit die Seite zwei Abschnitte zeigen kann
+  protected ausbildung = this.stations.filter((s) => s.art === "ausbildung");
+  protected berufserfahrung = this.stations.filter((s) => s.art === "beruf");
+
+  // Beide Abschnitte mit Überschrift, damit app.html sie nacheinander anzeigen kann
+  protected gruppen = [
+    { titel: "Berufserfahrung", stationen: this.berufserfahrung },
+    { titel: "Ausbildung", stationen: this.ausbildung },
+  ];
+
   // Ist das Menü auf dem Handy geöffnet?
   protected menuOffen = signal(false);
 
