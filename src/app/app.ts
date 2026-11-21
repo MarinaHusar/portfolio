@@ -248,6 +248,11 @@ export class App {
     const video = this.video()?.nativeElement;
     if (video) {
       video.currentTime = this.tCenter;
+      // iPhone (Safari) lädt die Bilder erst, wenn das Video kurz abgespielt wurde
+      video
+        .play()
+        .then(() => video.pause())
+        .catch(() => {});
     }
   }
 
