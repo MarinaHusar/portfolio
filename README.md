@@ -8,17 +8,18 @@ Persönliche Portfolio-Website mit Projekten, Technologien und Werdegang. Als Le
 
 - **Interaktiver Avatar:** Der Kopf folgt dem Mauszeiger. Dafür wird ein Video je nach Cursorposition an die passende Stelle gespult und weich angefahren.
 - **Handy und Tablet:** Ohne Maus dreht sich der Kopf von allein ruhig hin und her.
-- **Responsives Layout:** Eine Spalte auf dem Handy, zwei Spalten auf großen Bildschirmen, Burger-Menü auf kleinen Geräten.
+- **Responsives Layout:** Auf großen Bildschirmen steht der Text links und der Avatar rechts, auf dem Handy untereinander. Auf kleinen Geräten gibt es ein Burger-Menü.
 - **Navigation:** Der aktuelle Abschnitt wird im Menü hervorgehoben, ein Button führt zurück zum Seitenanfang.
 - **Werdegang:** Getrennt nach Berufserfahrung und Ausbildung.
+- **Links:** Über die Icons neben dem Avatar und im Kontaktbereich gelangt man direkt zu LinkedIn und GitHub.
 - **Lebenslauf:** Als PDF zum Download.
 
 ## Technologien
 
-- **Frontend:** HTML5, SCSS, JavaScript, TypeScript, Angular, Ionic, React (Grundlagen)
-- **Testing & QA:** Testpläne, manuelle Tests, Selenium, Playwright, Pytest
-- **Backend & Daten:** Node.js, Python, Java (Grundlagen), SQL, MySQL
-- **Tools & Methoden:** Git / GitHub, Azure DevOps, Jira, Scrum, Figma, Storybook
+- **Entwicklung:** Angular, TypeScript, HTML5, SCSS
+- **Layout:** CSS Grid, Flexbox und Media Queries für die Darstellung auf Handy, Tablet und Desktop
+- **Avatar:** erstellt mit Gemini und Kling, Entwicklung mit Unterstützung von Claude
+- **Versionsverwaltung:** Git und GitHub
 
 ## Screenshots
 
@@ -53,10 +54,3 @@ Danach ist die Seite unter `http://localhost:4200` erreichbar.
 - `src/app/app.html`: Aufbau der Seite
 - `src/app/app.scss`: Gestaltung und responsives Layout
 - `public/`: Avatar-Video, Bilder und Lebenslauf als PDF
-
-## Kontakt
-
-Ich freue mich über eine Nachricht zu Junior-Stellen in Erlangen, Nürnberg und Fürth oder remote.
-
-- [LinkedIn](https://www.linkedin.com/in/marina-husar)
-- [GitHub](https://github.com/MarinaHusar)
